@@ -42,12 +42,6 @@ variable "admin_username" {
   default     = "azureuser"
 }
 
-variable "virtual_network" {
-  description = "Azure virtual network name."
-  type        = string
-  default     = ""
-}
-
 variable "mgmt_plane_subnet_id" {
   description = "Management public Azure subnet ID."
   type        = string

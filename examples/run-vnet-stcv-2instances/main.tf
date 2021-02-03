@@ -8,7 +8,7 @@ provider "azurerm" {
 }
 
 data "azurerm_resource_group" "rg_stcv" {
-  name                = "default"
+  name = "default"
 }
 
 module "vnet" {
@@ -21,19 +21,20 @@ module "vnet" {
 }
 
 module "stcv" {
-  source                    = "../.."
-  instance_count            = 2
-  marketplace_version       = "5.15.0106"
-  resource_group_location   = data.azurerm_resource_group.rg_stcv.location
-  mgmt_plane_subnet_id      = "${module.vnet.vnet_subnets[0]}"
-  test_plane_subnet_id      = "${module.vnet.vnet_subnets[1]}"
-  user_data_file            = "../../cloud-init.yaml"
-  public_key                = "~/.ssh/id_rsa.pub"
+  source                  = "../.."
+  instance_count          = 2
+  marketplace_version     = "5.15.0106"
+  resource_group_location = data.azurerm_resource_group.rg_stcv.location
+  mgmt_plane_subnet_id    = module.vnet.vnet_subnets[0]
+  test_plane_subnet_id    = module.vnet.vnet_subnets[1]
+  user_data_file          = "../../cloud-init.yaml"
+  public_key              = "~/.ssh/id_rsa.pub"
 
-  # Warning: Using all address cidr block to simplify the example. You should restrict addresses to your public network.
-  ingress_cidr_blocks       = ["0.0.0.0/0"]
+  # Warning: Using all address cidr block to simplify the example. You should limit instance access.
+  ingress_cidr_blocks = ["0.0.0.0/0"]
 }
 
 output "instance_public_ips" {
-  value = module.stcv.*.instance_public_ips
+  description = "List of public IP addresses assigned to the instances, if applicable"
+  value       = module.stcv.*.instance_public_ips
 }

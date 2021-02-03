@@ -7,11 +7,15 @@ Instances can be controlled by the Spirent TestCenter application.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| azurerm | >=2.37.0 |
 
 ## Providers
 
-No provider.
+| Name | Version |
+|------|---------|
+| azurerm | >=2.37.0 |
 
 ## Inputs
 
