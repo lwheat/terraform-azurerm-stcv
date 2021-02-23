@@ -1,7 +1,9 @@
-# DOCUMENTATION
+# Spirent TestCenter Virtual Terraform
 
+## Description
 Run STCv traffic generator instances with public and test networks.
-Instances can be controlled by the Spirent TestCenter application.
+
+Instances can be controlled by the [Spirent TestCenter application](https://github.com/Spirent-terraform-Modules/terraform-azurerm-stc-gui).
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -16,6 +18,20 @@ Instances can be controlled by the Spirent TestCenter application.
 | Name | Version |
 |------|---------|
 | azurerm | >=2.37.0 |
+
+## Modules
+
+No Modules.
+
+## Resources
+
+| Name |
+|------|
+| [azurerm_linux_virtual_machine](https://registry.terraform.io/providers/hashicorp/azurerm/>=2.37.0/docs/resources/linux_virtual_machine) |
+| [azurerm_network_interface_security_group_association](https://registry.terraform.io/providers/hashicorp/azurerm/>=2.37.0/docs/resources/network_interface_security_group_association) |
+| [azurerm_network_interface](https://registry.terraform.io/providers/hashicorp/azurerm/>=2.37.0/docs/resources/network_interface) |
+| [azurerm_network_security_group](https://registry.terraform.io/providers/hashicorp/azurerm/>=2.37.0/docs/resources/network_security_group) |
+| [azurerm_public_ip](https://registry.terraform.io/providers/hashicorp/azurerm/>=2.37.0/docs/resources/public_ip) |
 
 ## Inputs
 
@@ -42,7 +58,6 @@ Instances can be controlled by the Spirent TestCenter application.
 | instance\_ids | List of instance IDs |
 | instance\_private\_ips | List of private IP addresses assigned to the instances, if applicable |
 | instance\_public\_ips | List of public IP addresses assigned to the instances, if applicable |
-
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## User Data (cloud-init)
@@ -65,10 +80,10 @@ spirent:
 | ntp | NTP server | IP address | x.x.x.x (cloud provider recommended)
 | ipv4mode | IPv4 address mode | none, static, dhcp | dhcp
 | ipaddress | IPv4 address (static mode) | IPv4 address | -
-| netmask | IPv4 netmask (static mode) | IPv4 netmaks | -
+| netmask | IPv4 netmask (static mode) | IPv4 netmask | -
 | gwaddress | IPv4 gateway address (static mode) | IPv4 gateway address | -
 | ipv6mode | IPv6 address mode | none, static, dhcp | none
-| ipv6address | IPv4 address (static mode) | IPv4 address | -
-| ipv6prefixlen | IPv6 prefix length (static mode) | IPv4 netmaks | -
-| ipv6gwaddress | IPv4 gateway address (static mode) | IPv6 gateway address | -
+| ipv6address | IPv6 address (static mode) | IPv6 address | -
+| ipv6prefixlen | IPv6 prefix length (static mode) | IPv6 prefix length | -
+| ipv6gwaddress | IPv6 gateway address (static mode) | IPv6 gateway address | -
 | gvtap | Turn Gigamon gvtap agent on or off| off, on | off
