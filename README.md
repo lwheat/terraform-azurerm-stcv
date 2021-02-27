@@ -1,7 +1,7 @@
-# Spirent TestCenter Virtual Terraform
+# Azure RM Spirent TestCenter Virtual Terraform
 
 ## Description
-Run STCv traffic generator instances with public and test networks.
+Run [STCv](https://www.spirent.com/products/testcenter-virtual-ethernet-ip-testing) traffic generator instances with public and test networks.
 
 Instances can be controlled by the [Spirent TestCenter application](https://github.com/Spirent-terraform-Modules/terraform-azurerm-stc-gui).
 
@@ -27,11 +27,11 @@ No Modules.
 
 | Name |
 |------|
-| [azurerm_linux_virtual_machine](https://registry.terraform.io/providers/hashicorp/azurerm/>=2.37.0/docs/resources/linux_virtual_machine) |
-| [azurerm_network_interface_security_group_association](https://registry.terraform.io/providers/hashicorp/azurerm/>=2.37.0/docs/resources/network_interface_security_group_association) |
-| [azurerm_network_interface](https://registry.terraform.io/providers/hashicorp/azurerm/>=2.37.0/docs/resources/network_interface) |
-| [azurerm_network_security_group](https://registry.terraform.io/providers/hashicorp/azurerm/>=2.37.0/docs/resources/network_security_group) |
-| [azurerm_public_ip](https://registry.terraform.io/providers/hashicorp/azurerm/>=2.37.0/docs/resources/public_ip) |
+| [azurerm_linux_virtual_machine](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/linux_virtual_machine) |
+| [azurerm_network_interface](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_interface) |
+| [azurerm_network_interface_security_group_association](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_interface_security_group_association) |
+| [azurerm_network_security_group](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_security_group) |
+| [azurerm_public_ip](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/public_ip) |
 
 ## Inputs
 

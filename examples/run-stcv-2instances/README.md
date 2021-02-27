@@ -40,7 +40,7 @@ Usage of Spirent TestCenter Virtual instances follows a Bring-Your-Own-License (
 
 | Name |
 |------|
-| [azurerm_subnet](https://registry.terraform.io/providers/hashicorp/azurerm/>=2.37.0/docs/data-sources/subnet) |
+| [azurerm_subnet](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/subnet) |
 
 ## Inputs
 

@@ -13,3 +13,4 @@ output "instance_ids" {
   description = "List of instance IDs"
   value       = azurerm_linux_virtual_machine.stcv.*.id
 }
+
