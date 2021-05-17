@@ -64,9 +64,16 @@ variable "public_key" {
   type        = string
 }
 
+variable "stcv_image_name" {
+  description = "The Spirent TestCenter Virtual image created from private vhd file.  This variable overrides the marketplace image."
+  type        = string
+  default     = ""
+}
+
 variable "marketplace_version" {
   description = "The Spirent TestCenter Virtual image version (e.g. 5.15.0106). When not specified, the latest marketplace image will be used."
   type        = string
+  default     = "latest"
 }
 
 variable "user_data_file" {

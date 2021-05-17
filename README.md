@@ -27,6 +27,7 @@ No Modules.
 
 | Name |
 |------|
+| [azurerm_image](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/image) |
 | [azurerm_linux_virtual_machine](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/linux_virtual_machine) |
 | [azurerm_network_interface](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_interface) |
 | [azurerm_network_interface_security_group_association](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_interface_security_group_association) |
@@ -43,11 +44,12 @@ No Modules.
 | instance\_count | Number of STCv instances to create. | `number` | `2` | no |
 | instance\_name | Name assigned to the instance.  An instance number will be appended to the name. | `string` | `"stcv"` | no |
 | instance\_size | Specifies the size of the STCv VM instance. | `string` | `"Standard_DS3_v2"` | no |
-| marketplace\_version | The Spirent TestCenter Virtual image version (e.g. 5.15.0106). When not specified, the latest marketplace image will be used. | `string` | n/a | yes |
+| marketplace\_version | The Spirent TestCenter Virtual image version (e.g. 5.15.0106). When not specified, the latest marketplace image will be used. | `string` | `"latest"` | no |
 | mgmt\_plane\_subnet\_id | Management public Azure subnet ID. | `string` | `""` | no |
 | public\_key | File path to public key. | `string` | n/a | yes |
 | resource\_group\_location | Resource group location in Azure. | `string` | `"West US"` | no |
 | resource\_group\_name | Resource group name in Azure. | `string` | `"default"` | no |
+| stcv\_image\_name | The Spirent TestCenter Virtual image created from private vhd file.  This variable overrides the marketplace image. | `string` | `""` | no |
 | test\_plane\_subnet\_id | Test or data plane Azure subnet ID. | `string` | `""` | no |
 | user\_data\_file | Path to the file containing user data for the instance. See README for Spirent TestCenter Virtual cloud-init configuration parameters that are supported. | `string` | n/a | yes |
 

@@ -134,6 +134,12 @@ resource "azurerm_network_interface_security_group_association" "test_plane" {
   network_security_group_id = azurerm_network_security_group.test_plane.id
 }
 
+data "azurerm_image" "stcv" {
+  count               = var.stcv_image_name != "" ? 1 : 0
+  name                = var.stcv_image_name
+  resource_group_name = var.resource_group_name
+}
+
 # Create STCv VMs
 resource "azurerm_linux_virtual_machine" "stcv" {
   count                 = var.instance_count
@@ -151,25 +157,30 @@ resource "azurerm_linux_virtual_machine" "stcv" {
 
   custom_data = base64encode(file(var.user_data_file))
 
-  plan {
-    name      = "testcentervirtual"
-    publisher = "spirentcommunications1594084187199"
-    product   = "testcenter_virtual"
-  }
-
   os_disk {
     name                 = "osdisk-${var.instance_name}-${count.index}"
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
 
-  source_image_reference {
-    publisher = "spirentcommunications1594084187199"
-    offer     = "testcenter_virtual"
-    sku       = "testcentervirtual"
-    version   = var.marketplace_version != "" ? var.marketplace_version : "latest"
+  source_image_id = var.stcv_image_name != "" ? data.azurerm_image.stcv[0].id : null
+  dynamic "source_image_reference" {
+    for_each = var.stcv_image_name != "" ? [] : [1]
+    content {
+      publisher = "spirentcommunications1594084187199"
+      offer     = "testcenter_virtual"
+      sku       = "testcentervirtual"
+      version   = var.marketplace_version != "" ? var.marketplace_version : "latest"
+    }
   }
+
+  dynamic "plan" {
+    for_each = var.stcv_image_name != "" ? [] : [1]
+    content {
+      name      = "testcentervirtual"
+      publisher = "spirentcommunications1594084187199"
+      product   = "testcenter_virtual"
+    }
+  }
+
 }
-
-
-
