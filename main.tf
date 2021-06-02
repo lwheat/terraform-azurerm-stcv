@@ -49,6 +49,18 @@ resource "azurerm_network_security_group" "mgmt_plane" {
   }
 
   security_rule {
+    name                       = "stc-chassis-ready"
+    priority                   = 130
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Udp"
+    source_port_range          = "*"
+    destination_port_range     = "40004"
+    source_address_prefixes    = var.ingress_cidr_blocks
+    destination_address_prefix = "*"
+  }
+
+  security_rule {
     name                       = "bll-ephemeral"
     description                = "All outbound traffic back to BLL"
     priority                   = 101
