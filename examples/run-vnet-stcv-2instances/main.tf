@@ -21,9 +21,11 @@ module "vnet" {
 }
 
 module "stcv" {
-  source                  = "../.."
-  instance_count          = 2
-  marketplace_version     = "5.15.0106"
+  source         = "../.."
+  instance_count = 2
+
+  # Use latest marketplace version unless specified
+  # marketplace_version   = "5.35.1866"
   resource_group_location = data.azurerm_resource_group.rg_stcv.location
   mgmt_plane_subnet_id    = module.vnet.vnet_subnets[0]
   test_plane_subnet_id    = module.vnet.vnet_subnets[1]

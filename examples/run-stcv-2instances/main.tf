@@ -20,9 +20,11 @@ data "azurerm_subnet" "test_plane" {
 }
 
 module "stcv" {
-  source                  = "../.."
-  instance_count          = 2
-  marketplace_version     = "5.15.0106"
+  source         = "../.."
+  instance_count = 2
+
+  # Use latest marketplace version unless specified
+  # marketplace_version   = "5.35.1866"
   resource_group_location = "West US 2"
   mgmt_plane_subnet_id    = data.azurerm_subnet.mgmt_plane.id
   test_plane_subnet_id    = data.azurerm_subnet.test_plane.id
