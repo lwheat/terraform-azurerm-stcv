@@ -50,7 +50,7 @@ resource "azurerm_network_security_group" "mgmt_plane" {
 
   security_rule {
     name                       = "stc-chassis-ready-QUIC"
-    priority                   = 130
+    priority                   = 131
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Udp"
@@ -74,7 +74,7 @@ resource "azurerm_network_security_group" "mgmt_plane" {
 
   security_rule {
     name                       = "stc-portgroup-QUIC"
-    priority                   = 120
+    priority                   = 121
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Udp"
@@ -100,7 +100,7 @@ resource "azurerm_network_security_group" "mgmt_plane" {
   security_rule {
     name                       = "bll-ephemeral-QUIC"
     description                = "All outbound traffic back to BLL"
-    priority                   = 101
+    priority                   = 102
     direction                  = "Outbound"
     access                     = "Allow"
     protocol                   = "Udp"
