@@ -37,18 +37,6 @@ resource "azurerm_network_security_group" "mgmt_plane" {
   }
 
   security_rule {
-    name                       = "stc-portgroup"
-    priority                   = 120
-    direction                  = "Inbound"
-    access                     = "Allow"
-    protocol                   = "Tcp"
-    source_port_range          = "*"
-    destination_port_range     = "51204"
-    source_address_prefixes    = var.ingress_cidr_blocks
-    destination_address_prefix = "*"
-  }
-
-  security_rule {
     name                       = "stc-chassis-ready"
     priority                   = 130
     direction                  = "Inbound"
@@ -61,12 +49,61 @@ resource "azurerm_network_security_group" "mgmt_plane" {
   }
 
   security_rule {
+    name                       = "stc-chassis-ready-QUIC"
+    priority                   = 131
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Udp"
+    source_port_range          = "*"
+    destination_port_range     = "40005"
+    source_address_prefixes    = var.ingress_cidr_blocks
+    destination_address_prefix = "*"
+  }
+
+  security_rule {
+    name                       = "stc-portgroup"
+    priority                   = 120
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "51204"
+    source_address_prefixes    = var.ingress_cidr_blocks
+    destination_address_prefix = "*"
+  }
+
+  security_rule {
+    name                       = "stc-portgroup-QUIC"
+    priority                   = 121
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Udp"
+    source_port_range          = "*"
+    destination_port_range     = "51204"
+    source_address_prefixes    = var.ingress_cidr_blocks
+    destination_address_prefix = "*"
+  }
+
+  security_rule {
     name                       = "bll-ephemeral"
     description                = "All outbound traffic back to BLL"
     priority                   = 101
     direction                  = "Outbound"
     access                     = "Allow"
     protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "49100-65535"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+
+  security_rule {
+    name                       = "bll-ephemeral-QUIC"
+    description                = "All outbound traffic back to BLL"
+    priority                   = 102
+    direction                  = "Outbound"
+    access                     = "Allow"
+    protocol                   = "Udp"
     source_port_range          = "*"
     destination_port_range     = "49100-65535"
     source_address_prefix      = "*"
