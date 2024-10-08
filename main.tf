@@ -158,11 +158,11 @@ resource "azurerm_network_interface" "mgmt_plane" {
 }
 
 resource "azurerm_network_interface" "test_plane" {
-  count                         = var.instance_count
-  name                          = "nic-test-${var.instance_name}-${count.index}"
-  location                      = var.resource_group_location
-  resource_group_name           = var.resource_group_name
-  enable_accelerated_networking = var.enable_accelerated_networking
+  count                          = var.instance_count
+  name                           = "nic-test-${var.instance_name}-${count.index}"
+  location                       = var.resource_group_location
+  resource_group_name            = var.resource_group_name
+  accelerated_networking_enabled = var.enable_accelerated_networking
 
   ip_configuration {
     name                          = "ipc-test-${var.instance_name}-${count.index}"
