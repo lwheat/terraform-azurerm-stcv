@@ -4,6 +4,7 @@ resource "azurerm_public_ip" "stcv" {
   name                = "publicip-${var.instance_name}-${count.index}"
   location            = var.resource_group_location
   resource_group_name = var.resource_group_name
+  sku                 = "Basic"
   allocation_method   = "Dynamic"
 }
 
