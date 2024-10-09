@@ -21,13 +21,13 @@ variable "instance_count" {
 variable "resource_group_name" {
   description = "Resource group name in Azure."
   type        = string
-  default     = "default"
+  default     = "rg-spirent-cip-network-core"
 }
 
 variable "resource_group_location" {
   description = "Resource group location in Azure."
   type        = string
-  default     = "West US"
+  default     = "East US"
 }
 
 variable "enable_accelerated_networking" {
